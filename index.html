@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Player 8-Bit</title>
+  <!-- Google Font Press Start 2P -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- NES.css CDN -->
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="pixel-app-container">
+    <header class="nes-container with-title is-centered header-container">
+      <p class="title">PIXEL PLAYER</p>
+      <div class="header-content">
+        <i class="nes-icon note is-medium"></i>
+        <span class="header-subtitle">Retro MP3 Player</span>
+      </div>
+    </header>
+
+    <!-- Display / Screen Area -->
+    <main class="nes-container is-dark is-rounded player-screen">
+      <!-- Now Playing Info -->
+      <section class="track-info-section">
+        <div class="track-title-wrapper">
+          <p class="track-label">&gt; TOCANDO AGORA:</p>
+          <div class="track-title-scroll">
+            <p id="current-track-title" class="track-title">NENHUMA MÚSICA SELECIONADA</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visualizer / Pixel Art Animation -->
+      <section class="visualizer-section">
+        <div class="pixel-art-screen">
+          <div class="sound-bars" id="sound-bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Time & Progress Bar -->
+      <section class="progress-section">
+        <div class="time-display">
+          <span id="current-time">00:00</span>
+          <span id="remaining-time" class="remaining-badge">-00:00</span>
+          <span id="total-time">00:00</span>
+        </div>
+        <progress id="progress-bar" class="nes-progress is-pattern" value="0" max="100"></progress>
+      </section>
+
+      <!-- Audio Controls -->
+      <section class="controls-section">
+        <button id="btn-prev" type="button" class="nes-btn is-warning pixel-btn" title="Anterior">
+          &lt;&lt;
+        </button>
+        <button id="btn-play-pause" type="button" class="nes-btn is-primary pixel-btn btn-play" title="Tocar / Pausar">
+          PLAY
+        </button>
+        <button id="btn-next" type="button" class="nes-btn is-warning pixel-btn" title="Próxima">
+          &gt;&gt;
+        </button>
+      </section>
+    </main>
+
+    <!-- File Upload Section -->
+    <section class="nes-container with-title file-upload-container">
+      <p class="title">ARQUIVOS LOCAL</p>
+      <label class="nes-btn is-success upload-btn">
+        <span>SELECIONAR MP3s</span>
+        <input type="file" id="file-input" accept="audio/mp3, audio/mpeg, .mp3" multiple class="hidden-file-input">
+      </label>
+      <p id="file-count" class="file-count-text">Nenhum arquivo carregado</p>
+    </section>
+
+    <!-- Playlist Section -->
+    <section class="nes-container with-title playlist-container">
+      <p class="title">PLAYLIST</p>
+      <div id="playlist-wrapper" class="playlist-wrapper">
+        <ul id="playlist" class="nes-list is-disc pixel-playlist">
+          <li class="empty-playlist-msg">Selecione arquivos MP3 acima para criar sua playlist.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Audio Element -->
+    <audio id="audio-player"></audio>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
